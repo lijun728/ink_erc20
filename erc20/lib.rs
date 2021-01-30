@@ -118,9 +118,7 @@ mod erc20 {
 
     }
 
-    /// Unit tests in Rust are normally defined within such a `#[cfg(test)]`
-    /// module and test functions are marked with a `#[test]` attribute.
-    /// The below code is technically just normal Rust code.
+
     #[cfg(test)]
     mod tests {
         /// Imports all the definitions from the outer scope so we can use them here.
@@ -128,18 +126,9 @@ mod erc20 {
 
         /// We test if the default constructor does its job.
         #[test]
-        fn default_works() {
-            let erc20 = Erc20::default();
-            assert_eq!(erc20.get(), false);
-        }
-
-        /// We test a simple use case of our contract.
-        #[test]
-        fn it_works() {
-            let mut erc20 = Erc20::new(false);
-            assert_eq!(erc20.get(), false);
-            erc20.flip();
-            assert_eq!(erc20.get(), true);
+        fn create_contract__works() {
+            let erc20 = Erc20::new(1000);
+            assert_eq!(erc20.total_supply(), 1000);
         }
     }
 }
